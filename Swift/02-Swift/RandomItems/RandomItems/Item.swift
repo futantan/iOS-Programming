@@ -12,7 +12,7 @@ class Item: Printable {
     var itemName: String
     var serialNumber: String
     var valueInDollars: Int
-    var dateCreated: NSDate
+    private(set) var dateCreated: NSDate
 
     class var randomItem: Item {
         let randomAdjectiveList = ["Fluffy", "Rusty", "Shiny"]
