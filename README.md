@@ -3,7 +3,7 @@
 再次学习这本经典，并将同时完成`OC`和`Swift`两个版本
 
 - [x] 第1章 第一个简单的iOS应用
-- [ ] 第2章 Objective-C
+- [x] 第2章 Objective-C
 - [ ] 第3章 通过ARC管理内存
 - [ ] 第4章 视图与视图层次结构
 - [ ] 第5章 视图：重绘与UIScrollView

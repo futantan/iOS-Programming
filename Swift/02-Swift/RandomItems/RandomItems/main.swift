@@ -8,5 +8,13 @@
 
 import Foundation
 
-println("Hello, World!")
+var items = [Item]()
 
+for i in 0 ..< 10 {
+    let item = Item.randomItem
+    items.append(item)
+}
+
+for item in items {
+    println(item)
+}
