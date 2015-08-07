@@ -57,10 +57,6 @@
     return [self initWithItemName:@"Item"];
 }
 
-- (void)dealloc {
-    NSLog(@"Destroyed: %@", self);
-}
-
 - (void)setItemName:(NSString *)str {
     _itemName = str;
 }
@@ -88,25 +84,6 @@
 - (NSDate *)dateCreated {
     return _dateCreated;
 }
-
-- (void)setContainedItem:(BNRItem *)item {
-    _containedItem = item;
-    item.container = self;
-}
-
-- (BNRItem *)containedItem {
-    return _containedItem;
-}
-
-
-- (void)setContainer:(BNRItem *)item {
-    _container = item;
-}
-
-- (BNRItem *)container {
-    return _container;
-}
-
 
 - (NSString *)description {
     NSString *descriptionString = [[NSString alloc] initWithFormat:@"%@ (%@): Worth $%d, recorded on %@",
