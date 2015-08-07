@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		18A4C6A51B6FA85A00DDF4B8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A4C6A41B6FA85A00DDF4B8 /* main.m */; };
 		18A4C6AD1B704E3500DDF4B8 /* BNRItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A4C6AC1B704E3500DDF4B8 /* BNRItem.m */; };
+		58B836ED213CC80FD9448A2B /* BNRPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B833CD236468AD91D9F3A6 /* BNRPerson.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +29,8 @@
 		18A4C6A41B6FA85A00DDF4B8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		18A4C6AB1B704E3500DDF4B8 /* BNRItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRItem.h; sourceTree = "<group>"; };
 		18A4C6AC1B704E3500DDF4B8 /* BNRItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRItem.m; sourceTree = "<group>"; };
+		58B833CD236468AD91D9F3A6 /* BNRPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRPerson.m; sourceTree = "<group>"; };
+		58B837DAE7D89E7253FFFE89 /* BNRPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRPerson.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +66,8 @@
 				18A4C6A41B6FA85A00DDF4B8 /* main.m */,
 				18A4C6AB1B704E3500DDF4B8 /* BNRItem.h */,
 				18A4C6AC1B704E3500DDF4B8 /* BNRItem.m */,
+				58B833CD236468AD91D9F3A6 /* BNRPerson.m */,
+				58B837DAE7D89E7253FFFE89 /* BNRPerson.h */,
 			);
 			path = RandomItems;
 			sourceTree = "<group>";
@@ -126,6 +131,7 @@
 			files = (
 				18A4C6A51B6FA85A00DDF4B8 /* main.m in Sources */,
 				18A4C6AD1B704E3500DDF4B8 /* BNRItem.m in Sources */,
+				58B836ED213CC80FD9448A2B /* BNRPerson.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

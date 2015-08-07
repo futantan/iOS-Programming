@@ -57,56 +57,14 @@
     return [self initWithItemName:@"Item"];
 }
 
+- (void)setContainedItem:(BNRItem *)containedItem {
+    _containedItem = containedItem;
+    self.containedItem.container = self;
+}
+
 - (void)dealloc {
     NSLog(@"Destroyed: %@", self);
 }
-
-- (void)setItemName:(NSString *)str {
-    _itemName = str;
-}
-
-- (NSString *)itemName {
-    return _itemName;
-}
-
-- (void)setSerialNumber:(NSString *)str {
-    _serialNumber = str;
-}
-
-- (NSString *)serialNumber {
-    return _serialNumber;
-}
-
-- (void)setValueInDollars:(int)v {
-    _valueInDollars = v;
-}
-
-- (int)valueInDollars {
-    return _valueInDollars;
-}
-
-- (NSDate *)dateCreated {
-    return _dateCreated;
-}
-
-- (void)setContainedItem:(BNRItem *)item {
-    _containedItem = item;
-    item.container = self;
-}
-
-- (BNRItem *)containedItem {
-    return _containedItem;
-}
-
-
-- (void)setContainer:(BNRItem *)item {
-    _container = item;
-}
-
-- (BNRItem *)container {
-    return _container;
-}
-
 
 - (NSString *)description {
     NSString *descriptionString = [[NSString alloc] initWithFormat:@"%@ (%@): Worth $%d, recorded on %@",
