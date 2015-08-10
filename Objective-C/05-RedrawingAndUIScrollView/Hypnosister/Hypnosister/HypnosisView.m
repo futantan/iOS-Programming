@@ -48,7 +48,7 @@
     center.x = (CGFloat) (bounds.origin.x + bounds.size.width / 2.0);
     center.y = (CGFloat) (bounds.origin.y + bounds.size.height / 2.0);
 
-    float maxRadius = (float) ((MIN(bounds.size.width, bounds.size.height)) / 2.0);
+    float maxRadius = (float) (hypot(bounds.size.width, bounds.size.height) / 2.0);
 
     UIBezierPath *path = [[UIBezierPath alloc] init];
 
@@ -66,16 +66,7 @@
 
     [path stroke];
 
-//    float imageHeight = 200;
-//    float imageWidth = 150;
-//    CGRect imageRect = CGRectMake(
-//            (CGFloat) ((bounds.size.width - imageWidth) / 2.0),
-//            (CGFloat) ((bounds.size.height - imageHeight) / 2.0),
-//            imageWidth,
-//            imageHeight);
-//
-//    UIImage *logoImage = [UIImage imageNamed:@"logo.png"];
-//    [logoImage drawInRect:imageRect];
+
 }
 
 @end
