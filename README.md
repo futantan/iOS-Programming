@@ -6,7 +6,7 @@
 - [x] 第2章 Objective-C
 - [x] 第3章 通过ARC管理内存
 - [x] 第4章 视图与视图层次结构
-- [ ] 第5章 视图：重绘与UIScrollView
+- [x] 第5章 视图：重绘与UIScrollView
 - [ ] 第6章 视图控制器
 - [ ] 第7章 委托与文本输入
 - [ ] 第8章 UITableView与UITableViewController
