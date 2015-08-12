@@ -89,8 +89,8 @@
 			children = (
 				18BEC7F31B7A0EB60011943C /* AppDelegate.h */,
 				18BEC7F41B7A0EB60011943C /* AppDelegate.m */,
-				18BEC81B1B7A148E0011943C /* ReminderViewController.h */,
 				18BEC81E1B7A160B0011943C /* ReminderViewController.xib */,
+				18BEC81B1B7A148E0011943C /* ReminderViewController.h */,
 				18BEC81C1B7A148E0011943C /* ReminderViewController.m */,
 				18BEC8151B7A0EE70011943C /* HypnosisView.h */,
 				18BEC8161B7A0EE70011943C /* HypnosisView.m */,
