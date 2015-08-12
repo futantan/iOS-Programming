@@ -12,7 +12,7 @@
 		1876FB3A1B6CF9FE00815514 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1876FB391B6CF9FE00815514 /* Images.xcassets */; };
 		1876FB491B6CF9FE00815514 /* QuizTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1876FB481B6CF9FE00815514 /* QuizTests.swift */; };
 		1876FB541B6CFD8600815514 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1876FB521B6CFD8600815514 /* QuizViewController.swift */; };
-		1876FB551B6CFD8600815514 /* QuizViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1876FB531B6CFD8600815514 /* QuizViewController.xib */; };
+		18C6183E1B7B5A6C00D85215 /* QuizViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C6183D1B7B5A6C00D85215 /* QuizViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,7 +35,7 @@
 		1876FB471B6CF9FE00815514 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1876FB481B6CF9FE00815514 /* QuizTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizTests.swift; sourceTree = "<group>"; };
 		1876FB521B6CFD8600815514 /* QuizViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
-		1876FB531B6CFD8600815514 /* QuizViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuizViewController.xib; sourceTree = "<group>"; };
+		18C6183D1B7B5A6C00D85215 /* QuizViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuizViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,7 +80,7 @@
 				1876FB321B6CF9FE00815514 /* AppDelegate.swift */,
 				1876FB341B6CF9FE00815514 /* ViewController.swift */,
 				1876FB521B6CFD8600815514 /* QuizViewController.swift */,
-				1876FB531B6CFD8600815514 /* QuizViewController.xib */,
+				18C6183D1B7B5A6C00D85215 /* QuizViewController.xib */,
 				1876FB391B6CF9FE00815514 /* Images.xcassets */,
 				1876FB301B6CF9FE00815514 /* Supporting Files */,
 			);
@@ -193,7 +193,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1876FB3A1B6CF9FE00815514 /* Images.xcassets in Resources */,
-				1876FB551B6CFD8600815514 /* QuizViewController.xib in Resources */,
+				18C6183E1B7B5A6C00D85215 /* QuizViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
