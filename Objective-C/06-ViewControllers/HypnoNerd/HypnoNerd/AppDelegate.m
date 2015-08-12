@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "HypnosisViewController.h"
 #import "ReminderViewController.h"
+#import "QuizViewController.h"
 
 @interface AppDelegate ()
 
@@ -19,12 +20,27 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-//    HypnosisViewController *hypnosisViewController = [[HypnosisViewController alloc] init];
-    NSBundle *appBundle = [NSBundle mainBundle];
-    ReminderViewController *reminderViewController = [[ReminderViewController alloc] initWithNibName:@"ReminderViewController"
-                                                                                              bundle:appBundle];
-    self.window.rootViewController = reminderViewController;
+
+    if ([UIApplication instancesRespondToSelector:@selector(registerUserNotificationSettings:)]) {
+        UIUserNotificationSettings *notificationSetting = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert
+                                                                                            categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSetting];
+    }
+
+    HypnosisViewController *hypnosisViewController = [[HypnosisViewController alloc] init];
+
+//    NSBundle *appBundle = [NSBundle mainBundle];
+//    ReminderViewController *reminderViewController = [[ReminderViewController alloc] initWithNibName:@"ReminderViewController"
+//                                                                                              bundle:appBundle];
+
+    ReminderViewController *reminderViewController = [[ReminderViewController alloc] init];
+
+    QuizViewController *quizViewController = [[QuizViewController alloc] init];
+
+    UITabBarController *tabBarController = [[UITabBarController alloc] init];
+    tabBarController.viewControllers = @[hypnosisViewController, reminderViewController, quizViewController];
+
+    self.window.rootViewController = tabBarController;
 
 //    self.window.rootViewController = hypnosisViewController;
     self.window.backgroundColor = [UIColor whiteColor];

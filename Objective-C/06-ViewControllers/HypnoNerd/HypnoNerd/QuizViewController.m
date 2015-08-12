@@ -42,13 +42,15 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     
     if (self) {
+        self.tabBarItem.title = @"quiz";
+
         self.questions = @[@"From what is cognac made?",
-                           @"What is 7+7?",
-                           @"What is the capital of Vermont?"];
-        
+                @"What is 7+7?",
+                @"What is the capital of Vermont?"];
+
         self.answers = @[@"Grapes",
-                         @"14",
-                         @"Montpelier"];
+                @"14",
+                @"Montpelier"];
     }
     return self;
 }

@@ -10,4 +10,6 @@
 
 @interface HypnosisView : UIView
 
+@property (strong, nonatomic) UIColor *circleColor;
+
 @end

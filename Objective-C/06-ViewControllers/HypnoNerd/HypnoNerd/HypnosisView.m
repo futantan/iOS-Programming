@@ -9,7 +9,7 @@
 #import "HypnosisView.h"
 
 @interface HypnosisView ()
-@property (strong, nonatomic) UIColor *circleColor;
+
 @end
 
 @implementation HypnosisView
