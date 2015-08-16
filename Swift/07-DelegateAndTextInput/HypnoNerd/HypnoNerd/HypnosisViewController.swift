@@ -60,6 +60,16 @@ class HypnosisViewController: UIViewController {
             messageLabel.frame = frame
             
             self.view.addSubview(messageLabel)
+            
+            var motionEffect = UIInterpolatingMotionEffect(keyPath: "center.x", type: UIInterpolatingMotionEffectType.TiltAlongHorizontalAxis)
+            motionEffect.minimumRelativeValue = -25
+            motionEffect.maximumRelativeValue = 25
+            messageLabel.addMotionEffect(motionEffect)
+            
+            motionEffect = UIInterpolatingMotionEffect(keyPath: "center.y", type: UIInterpolatingMotionEffectType.TiltAlongVerticalAxis)
+            motionEffect.minimumRelativeValue = -25
+            motionEffect.maximumRelativeValue = 25
+            messageLabel.addMotionEffect(motionEffect)
         }
     }
 }
