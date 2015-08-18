@@ -9,7 +9,7 @@
 #import "BNRItemStore.h"
 #import "BNRItem.h"
 
-@interface BNRItemStore()
+@interface BNRItemStore ()
 
 @property (nonatomic) NSMutableArray *privateItems;
 
@@ -48,6 +48,26 @@
 
 - (NSArray *)allItems {
     return self.privateItems;
+}
+
+- (NSArray *)itemsValueMoreThan50 {
+    NSMutableArray *items = [[NSMutableArray alloc] init];
+    for (BNRItem *item in _privateItems) {
+        if ([item valueInDollars] > 50) {
+            [items addObject:item];
+        }
+    }
+    return items;
+}
+
+- (NSArray *)itemsValueNoMoreThan50 {
+    NSMutableArray *items = [[NSMutableArray alloc] init];
+    for (BNRItem *item in _privateItems) {
+        if ([item valueInDollars] <= 50) {
+            [items addObject:item];
+        }
+    }
+    return items;
 }
 
 

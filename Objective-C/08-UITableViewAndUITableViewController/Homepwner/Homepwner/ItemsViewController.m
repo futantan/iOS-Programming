@@ -38,17 +38,41 @@
 
 #pragma mark UITableViewDataSource
 
+// 练习： 分为2组 大于50美元和小于50美元的
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 2;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [[[BNRItemStore sharedStore] allItems] count];
+    NSArray *allItems = [[BNRItemStore sharedStore] allItems];
+    int numOfMoreThan50 = (int)[[[BNRItemStore sharedStore] itemsValueMoreThan50] count];
+
+    if (section == 0) {
+        return numOfMoreThan50;
+    } else {
+        return [allItems count] - numOfMoreThan50;
+    }
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    if (section == 0) {
+        return @"more than 50";
+    }
+    else {
+        return @"no more than 50";
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-//                                                   reuseIdentifier:@"UITableViewCell"];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell" forIndexPath:indexPath];
 
-    NSArray *items = [[BNRItemStore sharedStore] allItems];
-    BNRItem *item = items[(NSUInteger) indexPath.row];
+    BNRItem *item;
+    if (indexPath.section == 0) {
+        item = [[BNRItemStore sharedStore] itemsValueMoreThan50][indexPath.row];
+    } else {
+        item = [[BNRItemStore sharedStore] itemsValueNoMoreThan50][indexPath.row];
+    }
+
     cell.textLabel.text = [item description];
     return cell;
 }
