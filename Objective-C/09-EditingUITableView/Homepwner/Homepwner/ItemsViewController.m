@@ -19,11 +19,22 @@
 @implementation ItemsViewController
 
 - (IBAction)addNewItem:(id)sender {
-
+    BNRItem *newItem = [[BNRItemStore sharedStore] createItem];
+    NSInteger lastRow = [[[BNRItemStore sharedStore] allItems] indexOfObject:newItem];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:lastRow inSection:0];
+    
+    // 将新行插入UITableView对象
+    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
 }
 
-- (IBAction)toggleEditingMode:(id)sender{
-
+- (IBAction)toggleEditingMode:(id)sender {
+    if (self.isEditing) {
+        [sender setTitle:@"Edit" forState:UIControlStateNormal];
+        [self setEditing:NO animated:YES];
+    } else {
+        [sender setTitle:@"Done" forState:UIControlStateNormal];
+        [self setEditing:YES animated:YES];
+    }
 }
 
 - (UIView *)headerView {
