@@ -31,6 +31,10 @@
     return item;
 }
 
+- (void)removeItem:(BNRItem *)item {
+    [self.privateItems removeObjectIdenticalTo:item];
+}
+
 - (instancetype)init {
     @throw [NSException exceptionWithName:@"Singleton"
                                    reason:@"Use +[BNRItemStore sharedStore]"

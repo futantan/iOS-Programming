@@ -22,7 +22,7 @@
     BNRItem *newItem = [[BNRItemStore sharedStore] createItem];
     NSInteger lastRow = [[[BNRItemStore sharedStore] allItems] indexOfObject:newItem];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:lastRow inSection:0];
-    
+
     // 将新行插入UITableView对象
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
 }
@@ -46,12 +46,11 @@
     return _headerView;
 }
 
-
 - (instancetype)init {
     // 在新的指定初始化方法中调用父类的指定初始化方法
     self = [super initWithStyle:UITableViewStylePlain];
     if (self) {
-        
+
     }
     return self;
 }
@@ -87,5 +86,21 @@
     cell.textLabel.text = [item description];
     return cell;
 }
+
+#pragma mark UITableViewDelegate
+
+- (void) tableView:(UITableView *)tableView
+commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+ forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        NSArray *items = [[BNRItemStore sharedStore] allItems];
+        BNRItem *item = items[indexPath.row];
+        [[BNRItemStore sharedStore] removeItem:item];
+
+        [tableView deleteRowsAtIndexPaths:@[indexPath]
+                         withRowAnimation:UITableViewRowAnimationFade];
+    }
+}
+
 
 @end
