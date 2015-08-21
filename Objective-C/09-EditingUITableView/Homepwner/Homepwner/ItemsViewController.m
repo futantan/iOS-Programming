@@ -51,9 +51,7 @@
     // 在新的指定初始化方法中调用父类的指定初始化方法
     self = [super initWithStyle:UITableViewStylePlain];
     if (self) {
-        for (int i = 0; i < 5; ++i) {
-            [[BNRItemStore sharedStore] createItem];
-        }
+        
     }
     return self;
 }
