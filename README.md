@@ -12,8 +12,8 @@
 |第5章 视图：重绘与UIScrollView                        |      ✅     |   ✅ |
 |第6章 视图控制器                                      |      ✅     |   ✅ |
 |第7章 委托与文本输入                                  |      ✅     |   ✅ |
-|第8章 UITableView与UITableViewController              |      ✅     |    |
-|第9章 编辑UITableView                                 |           |       |
+|第8章 UITableView与UITableViewController              |      ✅     |   ✅ |
+|第9章 编辑UITableView                                 |      ✅     |       |
 |第10章 UINavigationController                         |           |       |
 |第11章 相机                                           |           |       |
 |第12章 触摸事件与UIResponder                          |           |       |
