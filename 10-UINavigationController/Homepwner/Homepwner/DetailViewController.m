@@ -20,6 +20,11 @@
 
 @implementation DetailViewController
 
+- (void)setItem:(BNRItem *)item {
+    _item = item;
+    self.navigationItem.title = _item.itemName;
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     BNRItem *item = self.item;
