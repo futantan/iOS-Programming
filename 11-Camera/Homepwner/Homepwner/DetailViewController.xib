@@ -86,7 +86,7 @@
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <connections>
-                <action selector="touchView:" destination="-1" eventType="touchUpInside" id="PS6-GZ-hko"/>
+                <action selector="backgroundTapped:" destination="-1" eventType="touchUpInside" id="cOj-2D-SEF"/>
             </connections>
         </view>
     </objects>
