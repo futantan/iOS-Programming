@@ -20,6 +20,15 @@
 
 @implementation DetailViewController
 
+- (IBAction)touchView:(id)sender {
+    [self.view endEditing:YES];
+}
+
+- (IBAction)takePicture:(id)sender {
+    NSLog(@"123");
+}
+
+
 - (void)setItem:(BNRItem *)item {
     _item = item;
     self.navigationItem.title = _item.itemName;
