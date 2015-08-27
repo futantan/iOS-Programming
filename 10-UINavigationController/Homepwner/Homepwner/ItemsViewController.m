@@ -70,6 +70,13 @@
     [self.tableView setTableHeaderView:header];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+
+    [self.tableView reloadData];
+}
+
+
 #pragma mark UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -114,6 +121,11 @@ moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     DetailViewController *detailViewController = [[DetailViewController alloc] init];
+
+    NSArray *items = [[BNRItemStore sharedStore] allItems];
+    BNRItem *selectedItem = items[indexPath.row];
+
+    detailViewController.item = selectedItem;
 
     [self.navigationController pushViewController:detailViewController animated:YES];
 }
