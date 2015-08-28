@@ -27,6 +27,12 @@
     [self.view endEditing:YES];
 }
 
+- (IBAction)removeImg {
+    [[BNRImageStore sharedStore] deleteImageForKey:self.item.itemKey];
+    self.imageView.image = nil;
+}
+
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     return YES;
@@ -40,7 +46,8 @@
     } else {
         imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     }
-    
+  
+    [imagePicker setAllowsEditing:YES];
     imagePicker.delegate = self;
     [self presentViewController:imagePicker animated:YES completion:nil];
 }
@@ -84,7 +91,7 @@
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    UIImage *image = info[UIImagePickerControllerOriginalImage];
+    UIImage *image = info[UIImagePickerControllerEditedImage];
 
     [[BNRImageStore sharedStore] setImage:image forKey:self.item.itemKey];
 
