@@ -12,6 +12,9 @@
 		18D7DC921B933F2B00654477 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D7DC911B933F2B00654477 /* Images.xcassets */; };
 		18D7DC951B933F2B00654477 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18D7DC931B933F2B00654477 /* LaunchScreen.xib */; };
 		18D7DCA11B933F2B00654477 /* TouchTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D7DCA01B933F2B00654477 /* TouchTrackerTests.m */; };
+		18D7DCB21B9340C800654477 /* FTLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D7DCB11B9340C800654477 /* FTLine.m */; };
+		18D7DCB51B93415800654477 /* FTDrawView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D7DCB41B93415800654477 /* FTDrawView.m */; };
+		18D7DCB81B9341D500654477 /* FTDrawViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D7DCB71B9341D500654477 /* FTDrawViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +38,12 @@
 		18D7DC9A1B933F2B00654477 /* TouchTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TouchTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		18D7DC9F1B933F2B00654477 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18D7DCA01B933F2B00654477 /* TouchTrackerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TouchTrackerTests.m; sourceTree = "<group>"; };
+		18D7DCB01B9340C800654477 /* FTLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTLine.h; sourceTree = "<group>"; };
+		18D7DCB11B9340C800654477 /* FTLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTLine.m; sourceTree = "<group>"; };
+		18D7DCB31B93415800654477 /* FTDrawView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTDrawView.h; sourceTree = "<group>"; };
+		18D7DCB41B93415800654477 /* FTDrawView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTDrawView.m; sourceTree = "<group>"; };
+		18D7DCB61B9341D500654477 /* FTDrawViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTDrawViewController.h; sourceTree = "<group>"; };
+		18D7DCB71B9341D500654477 /* FTDrawViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTDrawViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +87,12 @@
 			children = (
 				18D7DC881B933F2B00654477 /* AppDelegate.h */,
 				18D7DC891B933F2B00654477 /* AppDelegate.m */,
+				18D7DCB01B9340C800654477 /* FTLine.h */,
+				18D7DCB11B9340C800654477 /* FTLine.m */,
+				18D7DCB31B93415800654477 /* FTDrawView.h */,
+				18D7DCB41B93415800654477 /* FTDrawView.m */,
+				18D7DCB61B9341D500654477 /* FTDrawViewController.h */,
+				18D7DCB71B9341D500654477 /* FTDrawViewController.m */,
 				18D7DC911B933F2B00654477 /* Images.xcassets */,
 				18D7DC931B933F2B00654477 /* LaunchScreen.xib */,
 				18D7DC841B933F2B00654477 /* Supporting Files */,
@@ -211,7 +226,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				18D7DC8A1B933F2B00654477 /* AppDelegate.m in Sources */,
+				18D7DCB81B9341D500654477 /* FTDrawViewController.m in Sources */,
 				18D7DC871B933F2B00654477 /* main.m in Sources */,
+				18D7DCB51B93415800654477 /* FTDrawView.m in Sources */,
+				18D7DCB21B9340C800654477 /* FTLine.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

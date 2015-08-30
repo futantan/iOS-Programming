@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "FTDrawViewController.h"
 
 @interface AppDelegate ()
 
@@ -18,6 +19,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   // Override point for customization after application launch.
+  FTDrawViewController *drawViewController = [[FTDrawViewController alloc] init];
+  self.window.rootViewController = drawViewController;
   self.window.backgroundColor = [UIColor whiteColor];
   [self.window makeKeyAndVisible];
   return YES;
