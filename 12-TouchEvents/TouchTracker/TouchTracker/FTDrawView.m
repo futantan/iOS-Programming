@@ -51,5 +51,30 @@
   }
 }
 
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+  UITouch *touch = [touches anyObject];
+
+  CGPoint location = [touch locationInView:self];
+
+  self.currentLine = [[FTLine alloc] init];
+  self.currentLine.begin = location;
+  self.currentLine.end = location;
+  [self setNeedsDisplay];
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+  UITouch *touch = [touches anyObject];
+
+  CGPoint location = [touch locationInView:self];
+  self.currentLine.end = location;
+  [self setNeedsDisplay];
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+  [self.finishedLines addObject:self.currentLine];
+  self.currentLine = nil;
+  [self setNeedsDisplay];
+}
+
 
 @end
