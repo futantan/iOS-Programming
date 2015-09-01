@@ -40,9 +40,28 @@
     tapGestureRecognizer.delaysTouchesBegan = YES;
     [tapGestureRecognizer requireGestureRecognizerToFail:doubleTapRecognizer];
     [self addGestureRecognizer:tapGestureRecognizer];
+
+    UILongPressGestureRecognizer *longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self
+                                                                                                             action:@selector(longPress:)];
+    [self addGestureRecognizer:longPressGestureRecognizer];
   }
 
   return self;
+}
+
+- (void)longPress:(UIGestureRecognizer *)gestureRecognizer {
+  if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
+    NSLog(@"long");
+    CGPoint point = [gestureRecognizer locationInView:self];
+    self.selectedLine = [self lineAtPoint:point];
+
+    if (self.selectedLine) {
+      [self.linesInProgress removeAllObjects];
+    }
+  } else if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
+    self.selectedLine = nil;
+  }
+  [self setNeedsDisplay];
 }
 
 - (void)tap:(UIGestureRecognizer *)gestureRecognizer {
