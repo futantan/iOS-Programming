@@ -57,6 +57,12 @@
 }
 
 - (void)moveLine:(UIPanGestureRecognizer *)gestureRecognizer {
+  UIMenuController *menuController = [UIMenuController sharedMenuController];
+  if (menuController.isMenuVisible) {
+    [menuController setMenuVisible:NO animated:NO];
+    self.selectedLine = nil;
+  }
+
   if (!self.selectedLine) {
     return;
   }
