@@ -9,8 +9,9 @@
 #import "FTDrawView.h"
 #import "FTLine.h"
 
-@interface FTDrawView ()
+@interface FTDrawView () <UIGestureRecognizerDelegate>
 
+@property(nonatomic, strong) UIPanGestureRecognizer *moveRecognizer;
 @property(nonatomic, strong) NSMutableDictionary *linesInProgress;
 @property(nonatomic, strong) NSMutableArray *finishedLines;
 @property(nonatomic, weak) FTLine *selectedLine;
@@ -44,14 +45,42 @@
     UILongPressGestureRecognizer *longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self
                                                                                                              action:@selector(longPress:)];
     [self addGestureRecognizer:longPressGestureRecognizer];
+
+    self.moveRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self
+                                                                  action:@selector(moveLine:)];
+    self.moveRecognizer.delegate = self;
+    self.moveRecognizer.cancelsTouchesInView = NO;
+    [self addGestureRecognizer:self.moveRecognizer];
   }
 
   return self;
 }
 
+- (void)moveLine:(UIPanGestureRecognizer *)gestureRecognizer {
+  if (!self.selectedLine) {
+    return;
+  }
+
+  if (gestureRecognizer.state == UIGestureRecognizerStateChanged) {
+    CGPoint translation = [gestureRecognizer translationInView:self];
+    CGPoint begin = self.selectedLine.begin;
+    CGPoint end = self.selectedLine.end;
+    begin.x += translation.x;
+    begin.y += translation.y;
+    end.x += translation.x;
+    end.y += translation.y;
+
+    self.selectedLine.begin = begin;
+    self.selectedLine.end = end;
+
+    [self setNeedsDisplay];
+
+    [gestureRecognizer setTranslation:CGPointZero inView:self];
+  }
+}
+
 - (void)longPress:(UIGestureRecognizer *)gestureRecognizer {
   if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
-    NSLog(@"long");
     CGPoint point = [gestureRecognizer locationInView:self];
     self.selectedLine = [self lineAtPoint:point];
 
@@ -195,6 +224,15 @@
 
 - (BOOL)canBecomeFirstResponder {
   return YES;
+}
+
+#pragma mark - UIGestureRecognizerDelegate
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+  if (gestureRecognizer == self.moveRecognizer) {
+    return YES;
+  }
+  return NO;
 }
 
 
