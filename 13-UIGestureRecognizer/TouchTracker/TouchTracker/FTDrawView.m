@@ -33,9 +33,19 @@
     doubleTapRecognizer.numberOfTapsRequired = 2;
     doubleTapRecognizer.delaysTouchesBegan = YES;
     [self addGestureRecognizer:doubleTapRecognizer];
+
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                           action:@selector(tap:)];
+    tapGestureRecognizer.delaysTouchesBegan = YES;
+    [tapGestureRecognizer requireGestureRecognizerToFail:doubleTapRecognizer];
+    [self addGestureRecognizer:tapGestureRecognizer];
   }
 
   return self;
+}
+
+- (void)tap:(UIGestureRecognizerState *)gestureRecognizer {
+  NSLog(@"Recognized tap");
 }
 
 - (void)doubleTap:(UIGestureRecognizer *)gesture {
