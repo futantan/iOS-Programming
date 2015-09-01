@@ -13,6 +13,7 @@
 
 @property(nonatomic, strong) NSMutableDictionary *linesInProgress;
 @property(nonatomic, strong) NSMutableArray *finishedLines;
+@property(nonatomic, weak) FTLine *selectedLine;
 
 @end
 
@@ -44,8 +45,33 @@
   return self;
 }
 
-- (void)tap:(UIGestureRecognizerState *)gestureRecognizer {
+- (void)tap:(UIGestureRecognizer *)gestureRecognizer {
   NSLog(@"Recognized tap");
+
+  CGPoint point = [gestureRecognizer locationInView:self];
+  self.selectedLine = [self lineAtPoint:point];
+
+  if (self.selectedLine) {
+
+    // 使视图成为 UIMenuItem 动作消息的目标
+    [self becomeFirstResponder];
+
+    UIMenuController *menuController = [UIMenuController sharedMenuController];
+    UIMenuItem *deleteItem = [[UIMenuItem alloc] initWithTitle:@"Delete" action:@selector(deleteLine:)];
+    menuController.menuItems = @[deleteItem];
+
+    [menuController setTargetRect:CGRectMake(point.x, point.y, 2, 2) inView:self];
+    [menuController setMenuVisible:YES animated:YES];
+  } else {
+    [[UIMenuController sharedMenuController] setMenuVisible:NO animated:YES];
+  }
+
+  [self setNeedsDisplay];
+}
+
+- (void)deleteLine:(id)deleteLine {
+  [self.finishedLines removeObject:self.selectedLine];
+  [self setNeedsDisplay];
 }
 
 - (void)doubleTap:(UIGestureRecognizer *)gesture {
@@ -76,6 +102,28 @@
   for (NSValue *key in self.linesInProgress) {
     [self strokeLine:self.linesInProgress[key]];
   }
+
+  if (self.selectedLine) {
+    [[UIColor greenColor] set];
+    [self strokeLine:self.selectedLine];
+  }
+}
+
+- (FTLine *)lineAtPoint:(CGPoint)point {
+  for (FTLine *line in self.finishedLines) {
+    CGPoint start = line.begin;
+    CGPoint end = line.end;
+
+    for (float t = 0.0; t <= 1.0; t += 0.05) {
+      float x = start.x + t * (end.x - start.x);
+      float y = start.y + t * (end.y - start.y);
+
+      if (hypot(x - point.x, y - point.y) < 20.0) {
+        return line;
+      }
+    }
+  }
+  return nil;
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -124,6 +172,10 @@
     [self.linesInProgress removeObjectForKey:key];
   }
   [self setNeedsDisplay];
+}
+
+- (BOOL)canBecomeFirstResponder {
+  return YES;
 }
 
 
