@@ -56,46 +56,30 @@
   return self;
 }
 
-- (void)moveLine:(UIPanGestureRecognizer *)gestureRecognizer {
-  UIMenuController *menuController = [UIMenuController sharedMenuController];
-  if (menuController.isMenuVisible) {
-    [menuController setMenuVisible:NO animated:NO];
-    self.selectedLine = nil;
+- (void)drawRect:(CGRect)rect {
+  [[UIColor blackColor] set];
+  for (FTLine *line in self.finishedLines) {
+    [self strokeLine:line];
   }
 
-  if (!self.selectedLine) {
-    return;
+  [[UIColor redColor] set];
+  for (NSValue *key in self.linesInProgress) {
+    [self strokeLine:self.linesInProgress[key]];
   }
 
-  if (gestureRecognizer.state == UIGestureRecognizerStateChanged) {
-    CGPoint translation = [gestureRecognizer translationInView:self];
-    CGPoint begin = self.selectedLine.begin;
-    CGPoint end = self.selectedLine.end;
-    begin.x += translation.x;
-    begin.y += translation.y;
-    end.x += translation.x;
-    end.y += translation.y;
-
-    self.selectedLine.begin = begin;
-    self.selectedLine.end = end;
-
-    [self setNeedsDisplay];
-
-    [gestureRecognizer setTranslation:CGPointZero inView:self];
+  if (self.selectedLine) {
+    [[UIColor greenColor] set];
+    [self strokeLine:self.selectedLine];
   }
 }
 
-- (void)longPress:(UIGestureRecognizer *)gestureRecognizer {
-  if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
-    CGPoint point = [gestureRecognizer locationInView:self];
-    self.selectedLine = [self lineAtPoint:point];
+#pragma mark - Gesture Selector
 
-    if (self.selectedLine) {
-      [self.linesInProgress removeAllObjects];
-    }
-  } else if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
-    self.selectedLine = nil;
-  }
+- (void)doubleTap:(UIGestureRecognizer *)gesture {
+  NSLog(@"Recognized Double Tap");
+
+  [self.linesInProgress removeAllObjects];
+  [self.finishedLines removeAllObjects];
   [self setNeedsDisplay];
 }
 
@@ -123,18 +107,51 @@
   [self setNeedsDisplay];
 }
 
-- (void)deleteLine:(id)deleteLine {
-  [self.finishedLines removeObject:self.selectedLine];
+- (void)longPress:(UIGestureRecognizer *)gestureRecognizer {
+  if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
+    CGPoint point = [gestureRecognizer locationInView:self];
+    self.selectedLine = [self lineAtPoint:point];
+
+    if (self.selectedLine) {
+      [self.linesInProgress removeAllObjects];
+    }
+  } else if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
+    self.selectedLine = nil;
+  }
   [self setNeedsDisplay];
 }
 
-- (void)doubleTap:(UIGestureRecognizer *)gesture {
-  NSLog(@"Recognized Double Tap");
+- (void)moveLine:(UIPanGestureRecognizer *)gestureRecognizer {
+  UIMenuController *menuController = [UIMenuController sharedMenuController];
+  if (menuController.isMenuVisible) {
+    [menuController setMenuVisible:NO animated:NO];
+    self.selectedLine = nil;
+  }
 
-  [self.linesInProgress removeAllObjects];
-  [self.finishedLines removeAllObjects];
-  [self setNeedsDisplay];
+  if (!self.selectedLine) {
+    return;
+  }
+
+
+  if (gestureRecognizer.state == UIGestureRecognizerStateChanged) {
+    CGPoint translation = [gestureRecognizer translationInView:self];
+    CGPoint begin = self.selectedLine.begin;
+    CGPoint end = self.selectedLine.end;
+    begin.x += translation.x;
+    begin.y += translation.y;
+    end.x += translation.x;
+    end.y += translation.y;
+
+    self.selectedLine.begin = begin;
+    self.selectedLine.end = end;
+
+    [self setNeedsDisplay];
+
+    [gestureRecognizer setTranslation:CGPointZero inView:self];
+  }
 }
+
+#pragma mark - helper
 
 - (void)strokeLine:(FTLine *)line {
   UIBezierPath *bezierPath = [UIBezierPath bezierPath];
@@ -146,21 +163,9 @@
   [bezierPath stroke];
 }
 
-- (void)drawRect:(CGRect)rect {
-  [[UIColor blackColor] set];
-  for (FTLine *line in self.finishedLines) {
-    [self strokeLine:line];
-  }
-
-  [[UIColor redColor] set];
-  for (NSValue *key in self.linesInProgress) {
-    [self strokeLine:self.linesInProgress[key]];
-  }
-
-  if (self.selectedLine) {
-    [[UIColor greenColor] set];
-    [self strokeLine:self.selectedLine];
-  }
+- (void)deleteLine:(id)deleteLine {
+  [self.finishedLines removeObject:self.selectedLine];
+  [self setNeedsDisplay];
 }
 
 - (FTLine *)lineAtPoint:(CGPoint)point {
@@ -179,6 +184,8 @@
   }
   return nil;
 }
+
+#pragma mark - TouchEvent
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
   NSLog(@"%@", NSStringFromSelector(_cmd));
