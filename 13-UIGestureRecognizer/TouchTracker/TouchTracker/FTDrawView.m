@@ -189,6 +189,7 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
   NSLog(@"%@", NSStringFromSelector(_cmd));
+  NSLog(@"hello");
 
   for (UITouch *touch in touches) {
     CGPoint location = [touch locationInView:self];
