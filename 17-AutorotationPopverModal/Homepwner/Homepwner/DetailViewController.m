@@ -18,6 +18,7 @@
 @property(weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property(weak, nonatomic) IBOutlet UIImageView *imageView;
 @property(weak, nonatomic) IBOutlet UIToolbar *toolbar;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *cameraButton;
 
 @end
 
@@ -84,6 +85,10 @@
 
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
+
+  UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
+  [self prepareViewsForOrientation:orientation];
+
   BNRItem *item = self.item;
   self.nameField.text = item.itemName;
   self.serialNumberField.text = item.serialNumber;
@@ -113,6 +118,24 @@
   item.itemName = self.nameField.text;
   item.serialNumber = self.serialNumberField.text;
   item.valueInDollars = [self.valueField.text intValue];
+}
+
+- (void)prepareViewsForOrientation:(UIInterfaceOrientation)orientation {
+  if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+    return;
+  }
+
+  if (UIInterfaceOrientationIsLandscape(orientation)) {
+    self.imageView.hidden = YES;
+    self.cameraButton.enabled = NO;
+  } else {
+    self.imageView.hidden = NO;
+    self.cameraButton.enabled = YES;
+  }
+}
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+  [self prepareViewsForOrientation:toInterfaceOrientation];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
