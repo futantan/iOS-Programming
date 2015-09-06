@@ -19,68 +19,68 @@
 @implementation ItemsViewController
 
 - (IBAction)addNewItem:(id)sender {
-    BNRItem *newItem = [[BNRItemStore sharedStore] createItem];
-    NSInteger lastRow = [[[BNRItemStore sharedStore] allItems] indexOfObject:newItem];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:lastRow inSection:0];
+  BNRItem *newItem = [[BNRItemStore sharedStore] createItem];
+  NSInteger lastRow = [[[BNRItemStore sharedStore] allItems] indexOfObject:newItem];
+  NSIndexPath *indexPath = [NSIndexPath indexPathForRow:lastRow inSection:0];
 
-    // 将新行插入UITableView对象
-    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
+  // 将新行插入UITableView对象
+  [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
 }
 
 - (instancetype)init {
-    // 在新的指定初始化方法中调用父类的指定初始化方法
-    self = [super initWithStyle:UITableViewStylePlain];
-    if (self) {
-        UINavigationItem *navItem = self.navigationItem;
-        navItem.title = @"Homepwner";
+  // 在新的指定初始化方法中调用父类的指定初始化方法
+  self = [super initWithStyle:UITableViewStylePlain];
+  if (self) {
+    UINavigationItem *navItem = self.navigationItem;
+    navItem.title = @"Homepwner";
 
-        UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
-                                                                                       target:self
-                                                                                       action:@selector(addNewItem:)];
-        navItem.rightBarButtonItem = barButtonItem;
+    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                                                                   target:self
+                                                                                   action:@selector(addNewItem:)];
+    navItem.rightBarButtonItem = barButtonItem;
 
-        navItem.leftBarButtonItem = self.editButtonItem;
-    }
-    return self;
+    navItem.leftBarButtonItem = self.editButtonItem;
+  }
+  return self;
 }
 
 - (instancetype)initWithStyle:(UITableViewStyle)style {
-    // 覆盖父类的指定初始化，调用新的指定初始化方法
-    return [self init];
+  // 覆盖父类的指定初始化，调用新的指定初始化方法
+  return [self init];
 }
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
+  [super viewDidLoad];
 
-    [self.tableView registerClass:[UITableViewCell class]
-           forCellReuseIdentifier:@"UITableViewCell"];
+  [self.tableView registerClass:[UITableViewCell class]
+         forCellReuseIdentifier:@"UITableViewCell"];
 
-    UIView *header = self.headerView;
-    [self.tableView setTableHeaderView:header];
+  UIView *header = self.headerView;
+  [self.tableView setTableHeaderView:header];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+  [super viewWillAppear:animated];
 
-    [self.tableView reloadData];
+  [self.tableView reloadData];
 }
 
 
 #pragma mark UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [[[BNRItemStore sharedStore] allItems] count];
+  return [[[BNRItemStore sharedStore] allItems] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 //    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
 //                                                   reuseIdentifier:@"UITableViewCell"];
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell" forIndexPath:indexPath];
+  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell" forIndexPath:indexPath];
 
-    NSArray *items = [[BNRItemStore sharedStore] allItems];
-    BNRItem *item = items[(NSUInteger) indexPath.row];
-    cell.textLabel.text = [item description];
-    return cell;
+  NSArray *items = [[BNRItemStore sharedStore] allItems];
+  BNRItem *item = items[(NSUInteger) indexPath.row];
+  cell.textLabel.text = [item description];
+  return cell;
 }
 
 #pragma mark UITableViewDelegate
@@ -88,35 +88,36 @@
 - (void) tableView:(UITableView *)tableView
 commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
  forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        NSArray *items = [[BNRItemStore sharedStore] allItems];
-        BNRItem *item = items[indexPath.row];
-        [[BNRItemStore sharedStore] removeItem:item];
+  if (editingStyle == UITableViewCellEditingStyleDelete) {
+    NSArray *items = [[BNRItemStore sharedStore] allItems];
+    BNRItem *item = items[indexPath.row];
+    [[BNRItemStore sharedStore] removeItem:item];
 
-        [tableView deleteRowsAtIndexPaths:@[indexPath]
-                         withRowAnimation:UITableViewRowAnimationFade];
-    }
+    [tableView deleteRowsAtIndexPaths:@[indexPath]
+                     withRowAnimation:UITableViewRowAnimationFade];
+  }
 }
 
 - (void) tableView:(UITableView *)tableView
 moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath
        toIndexPath:(NSIndexPath *)destinationIndexPath {
-    [[BNRItemStore sharedStore] moveItemAtIndex:sourceIndexPath.row toIndex:destinationIndexPath.row];
+  [[BNRItemStore sharedStore] moveItemAtIndex:sourceIndexPath.row toIndex:destinationIndexPath.row];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return @"Remove";
+  return @"Remove";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    DetailViewController *detailViewController = [[DetailViewController alloc] init];
+//    DetailViewController *detailViewController = [[DetailViewController alloc] init];
 
-    NSArray *items = [[BNRItemStore sharedStore] allItems];
-    BNRItem *selectedItem = items[indexPath.row];
 
-    detailViewController.item = selectedItem;
+  NSArray *items = [[BNRItemStore sharedStore] allItems];
+  BNRItem *selectedItem = items[indexPath.row];
 
-    [self.navigationController pushViewController:detailViewController animated:YES];
+  detailViewController.item = selectedItem;
+
+  [self.navigationController pushViewController:detailViewController animated:YES];
 }
 
 

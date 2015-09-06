@@ -13,14 +13,14 @@
 @interface DetailViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate,
     UITextFieldDelegate, UIPopoverControllerDelegate>
 
-@property(nonatomic, strong) UIPopoverController *imagePickerPopover;
-@property(weak, nonatomic) IBOutlet UITextField *nameField;
-@property(weak, nonatomic) IBOutlet UITextField *serialNumberField;
-@property(weak, nonatomic) IBOutlet UITextField *valueField;
-@property(weak, nonatomic) IBOutlet UILabel *dateLabel;
-@property(weak, nonatomic) IBOutlet UIImageView *imageView;
-@property(weak, nonatomic) IBOutlet UIToolbar *toolbar;
-@property(weak, nonatomic) IBOutlet UIBarButtonItem *cameraButton;
+@property (nonatomic, strong) UIPopoverController *imagePickerPopover;
+@property (weak, nonatomic) IBOutlet UITextField *nameField;
+@property (weak, nonatomic) IBOutlet UITextField *serialNumberField;
+@property (weak, nonatomic) IBOutlet UITextField *valueField;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *cameraButton;
 
 @end
 
@@ -94,6 +94,33 @@
   item.itemName = self.nameField.text;
   item.serialNumber = self.serialNumberField.text;
   item.valueInDollars = [self.valueField.text intValue];
+}
+
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+  @throw [NSException exceptionWithName:@"Wrong initializer"
+                                 reason:@"Use initForNewItem:"
+                               userInfo:nil];
+  return nil;
+}
+
+- (instancetype)initForNewItem:(BOOL)isNew {
+  self = [super initWithNibName:nil bundle:nil];
+
+  if (self) {
+    if (isNew) {
+      UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                                                target:self
+                                                                                action:@selector(save:)];
+      self.navigationItem.rightBarButtonItem = doneItem;
+
+      UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+                                                                                  target:self
+                                                                                  action:@selector(cancel:)];
+      self.navigationItem.leftBarButtonItem = cancelItem;
+    }
+  }
+
+  return self;
 }
 
 - (void)setItem:(BNRItem *)item {
