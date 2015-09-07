@@ -9,14 +9,15 @@
 #import "DetailViewController.h"
 #import "BNRItem.h"
 #import "BNRImageStore.h"
+#import "BNRItemStore.h"
 
 @interface DetailViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate,
     UITextFieldDelegate, UIPopoverControllerDelegate>
 
 @property (nonatomic, strong) UIPopoverController *imagePickerPopover;
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
-@property (weak, nonatomic) IBOutlet UITextField *serialNumberField;
 @property (weak, nonatomic) IBOutlet UITextField *valueField;
+@property (weak, nonatomic) IBOutlet UITextField *serialNumberField;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
@@ -211,5 +212,16 @@
     self.imageView.hidden = NO;
     self.cameraButton.enabled = YES;
   }
+}
+
+- (void)save:(id)save {
+  [self.presentingViewController dismissViewControllerAnimated:YES
+                                                    completion:self.dismissBlock];
+}
+
+- (void)cancel:(id)cancel {
+  [[BNRItemStore sharedStore] removeItem:self.item];
+  [self.presentingViewController dismissViewControllerAnimated:YES
+                                                    completion:self.dismissBlock];
 }
 @end
