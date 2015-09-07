@@ -18,9 +18,9 @@
 |第11章 相机                                           |      ✅     |  
 |第12章 触摸事件与UIResponder                          |      ✅     |  
 |第13章 UIGestureRecognizer与UIMenuController          |      ✅     |  
-|第15章 自动布局                                       |           |  
-|第16章 在代码中使用自动布局                           |           |  
-|第17章 自动转屏，UIPopoverController与模态视图控制器  |           |  
+|第15章 自动布局                                       |      ✅     |  
+|第16章 在代码中使用自动布局                           |      ✅     |  
+|第17章 自动转屏，UIPopoverController与模态视图控制器  |      ✅     |  
 |第18章 保存、读取应用状态                             |           |  
 |第19章 创建UITableViewCell子类                        |           |  
 |第20章 动态字体                                       |           |  
