@@ -81,6 +81,7 @@
   [aCoder encodeObject:self.itemName forKey:@"itemName"];
   [aCoder encodeObject:self.serialNumber forKey:@"serialNumber"];
   [aCoder encodeObject:self.dateCreated forKey:@"dateCreated"];
+  [aCoder encodeObject:self.itemKey forKey:@"itemKey"];
   [aCoder encodeInt:self.valueInDollars forKey:@"valueInDollars"];
 }
 

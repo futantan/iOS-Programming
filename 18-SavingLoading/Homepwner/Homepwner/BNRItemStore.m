@@ -62,7 +62,6 @@
   if (self) {
     NSString *path = [self itemArchivePath];
     _privateItems = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
-
     if (!_privateItems) {
       _privateItems = [[NSMutableArray alloc] init];
     }

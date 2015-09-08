@@ -13,6 +13,7 @@
 @interface DetailViewController : UIViewController
 
 - (instancetype)initForNewItem:(BOOL)isNew;
+
 @property (nonatomic, copy) void (^dismissBlock)(void);
 @property (nonatomic, strong) BNRItem *item;
 

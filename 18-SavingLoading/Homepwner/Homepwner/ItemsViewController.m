@@ -20,9 +20,6 @@
 
 - (IBAction)addNewItem:(id)sender {
   BNRItem *newItem = [[BNRItemStore sharedStore] createItem];
-//  NSInteger lastRow = [[[BNRItemStore sharedStore] allItems] indexOfObject:newItem];
-//  NSIndexPath *indexPath = [NSIndexPath indexPathForRow:lastRow inSection:0];
-//  [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
 
   DetailViewController *detailViewController = [[DetailViewController alloc] initForNewItem:YES];
   detailViewController.item = newItem;

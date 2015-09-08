@@ -41,10 +41,27 @@
 
 - (void)setImage:(UIImage *)image forKey:(NSString *)key {
   self.dictionary[key] = image;
+  NSString *imagePath = [self imagePathForKey:key];
+  NSData *data = UIImageJPEGRepresentation(image, 0.5);
+  [data writeToFile:imagePath atomically:YES];
 }
 
 - (UIImage *)imageForKey:(NSString *)key {
-  return self.dictionary[key];
+  // 首先尝试通过字典对象获取图片
+  UIImage *result = self.dictionary[key];
+  // 如果字典中不存在，从文件中加载
+  if (!result) {
+    NSString *imagePath = [self imagePathForKey:key];
+    result = [UIImage imageWithContentsOfFile:imagePath];
+    // 从文件中加载之后，将其存入字典，作为缓存
+    if (result) {
+      self.dictionary[key] = result;
+    } else {
+      NSLog(@"key:%@", key);
+      NSLog(@"Error: unable to find %@", [self imagePathForKey:key]);
+    }
+  }
+  return result;
 }
 
 - (void)deleteImageForKey:(NSString *)key {
@@ -52,6 +69,14 @@
     return;
   }
   [self.dictionary removeObjectForKey:key];
+  NSString *imagePath = [self imagePathForKey:key];
+  [[NSFileManager defaultManager] removeItemAtPath:imagePath error:nil];
+}
+
+- (NSString *)imagePathForKey:(NSString *)key {
+  NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+  NSString *documentDirectory = [documentDirectories firstObject];
+  return [documentDirectory stringByAppendingPathComponent:key];
 }
 
 

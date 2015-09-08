@@ -21,4 +21,6 @@
 
 - (void)deleteImageForKey:(NSString *)key;
 
+- (NSString *)imagePathForKey:(NSString *)key;
+
 @end
