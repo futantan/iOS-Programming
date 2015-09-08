@@ -10,6 +10,7 @@
 		185031C41B8F02EB00DAA146 /* BNRImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 185031C31B8F02EB00DAA146 /* BNRImageStore.m */; };
 		18F04E5D1B8DFA3A00823214 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F04E5B1B8DFA3A00823214 /* DetailViewController.m */; };
 		18F04E5E1B8DFA3A00823214 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18F04E5C1B8DFA3A00823214 /* DetailViewController.xib */; };
+		18F374501B9F1CC60089BAB0 /* BNRItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18F3744F1B9F1CC60089BAB0 /* BNRItemCell.xib */; };
 		18F725861B81D4C000B49402 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F725851B81D4C000B49402 /* main.m */; };
 		18F725891B81D4C000B49402 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F725881B81D4C000B49402 /* AppDelegate.m */; };
 		18F725911B81D4C000B49402 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18F725901B81D4C000B49402 /* Images.xcassets */; };
@@ -37,6 +38,7 @@
 		18F04E5A1B8DFA3A00823214 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		18F04E5B1B8DFA3A00823214 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		18F04E5C1B8DFA3A00823214 /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
+		18F3744F1B9F1CC60089BAB0 /* BNRItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BNRItemCell.xib; sourceTree = "<group>"; };
 		18F725801B81D4C000B49402 /* Homepwner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homepwner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18F725841B81D4C000B49402 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18F725851B81D4C000B49402 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -100,6 +102,9 @@
 				18F725881B81D4C000B49402 /* AppDelegate.m */,
 				18F725AC1B81FB1E00B49402 /* BNRItem.h */,
 				18F725AD1B81FB1E00B49402 /* BNRItem.m */,
+				58B83AD6F433EC27E8A14FFF /* BNRItemCell.h */,
+				58B83E3682D939446BB277D9 /* BNRItemCell.m */,
+				18F3744F1B9F1CC60089BAB0 /* BNRItemCell.xib */,
 				18F725A91B81D63100B49402 /* ItemsViewController.h */,
 				18F725AA1B81D63100B49402 /* ItemsViewController.m */,
 				18F04E5A1B8DFA3A00823214 /* DetailViewController.h */,
@@ -112,8 +117,6 @@
 				18F725901B81D4C000B49402 /* Images.xcassets */,
 				18F725921B81D4C000B49402 /* LaunchScreen.xib */,
 				18F725831B81D4C000B49402 /* Supporting Files */,
-				58B83E3682D939446BB277D9 /* BNRItemCell.m */,
-				58B83AD6F433EC27E8A14FFF /* BNRItemCell.h */,
 			);
 			path = Homepwner;
 			sourceTree = "<group>";
@@ -225,6 +228,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18F725941B81D4C000B49402 /* LaunchScreen.xib in Resources */,
+				18F374501B9F1CC60089BAB0 /* BNRItemCell.xib in Resources */,
 				18F725911B81D4C000B49402 /* Images.xcassets in Resources */,
 				18F04E5E1B8DFA3A00823214 /* DetailViewController.xib in Resources */,
 			);
