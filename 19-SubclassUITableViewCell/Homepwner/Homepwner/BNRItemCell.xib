@@ -38,7 +38,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0VV-k1-ekk">
-                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                        <rect key="frame" x="0.0" y="2" width="40" height="40"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="40" id="AUt-LS-mkG"/>
                             <constraint firstAttribute="height" constant="40" id="r1Q-aF-ngc"/>
@@ -51,13 +51,19 @@
                     <constraint firstItem="oJ4-zG-fHP" firstAttribute="leading" secondItem="hpn-Av-oto" secondAttribute="trailing" constant="8" id="F9l-Ds-u6k"/>
                     <constraint firstItem="hpn-Av-oto" firstAttribute="leading" secondItem="0VV-k1-ekk" secondAttribute="trailing" constant="6" id="N2r-KD-ojf"/>
                     <constraint firstItem="MLM-CE-g40" firstAttribute="leading" secondItem="0VV-k1-ekk" secondAttribute="trailing" constant="6" id="O8C-se-qtU"/>
+                    <constraint firstAttribute="centerY" secondItem="0VV-k1-ekk" secondAttribute="centerY" id="Rr7-aH-rae"/>
                     <constraint firstItem="oJ4-zG-fHP" firstAttribute="leading" secondItem="MLM-CE-g40" secondAttribute="trailing" constant="8" id="S5a-oz-uzl"/>
                     <constraint firstItem="MLM-CE-g40" firstAttribute="top" relation="greaterThanOrEqual" secondItem="hpn-Av-oto" secondAttribute="bottom" constant="1" id="VHw-et-2Gm"/>
-                    <constraint firstAttribute="centerY" secondItem="0VV-k1-ekk" secondAttribute="centerY" constant="1.75" id="adR-xQ-GgV"/>
+                    <constraint firstAttribute="centerY" secondItem="0VV-k1-ekk" secondAttribute="centerY" constant="2" id="adR-xQ-GgV"/>
                     <constraint firstAttribute="centerY" secondItem="oJ4-zG-fHP" secondAttribute="centerY" id="chl-1c-7m5"/>
                     <constraint firstItem="hpn-Av-oto" firstAttribute="top" secondItem="te1-jW-YEp" secondAttribute="topMargin" constant="-8" id="kvo-II-gvu"/>
                     <constraint firstItem="0VV-k1-ekk" firstAttribute="leading" secondItem="te1-jW-YEp" secondAttribute="leading" id="xh8-hs-kiO"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="adR-xQ-GgV"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <connections>
                 <outlet property="nameLabel" destination="hpn-Av-oto" id="lZ5-F4-R3I"/>

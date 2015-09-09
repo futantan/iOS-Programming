@@ -67,7 +67,7 @@
   [self.tableView reloadData];
 }
 
-  
+
 #pragma mark UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -83,6 +83,8 @@
   cell.nameLabel.text = item.itemName;
   cell.serialNumberLabel.text = item.serialNumber;
   cell.valueLabel.text = [NSString stringWithFormat:@"$%d", item.valueInDollars];
+  cell.thumbnailView.image = item.thumbnail;
+
   return cell;
 }
 
