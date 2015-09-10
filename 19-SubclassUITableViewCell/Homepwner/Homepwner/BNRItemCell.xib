@@ -44,19 +44,32 @@
                             <constraint firstAttribute="height" constant="40" id="r1Q-aF-ngc"/>
                         </constraints>
                     </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0nC-mp-JRA">
+                        <rect key="frame" x="0.0" y="2" width="40" height="40"/>
+                        <state key="normal">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="showImage:" destination="jNj-EI-N22" eventType="touchUpInside" id="yQC-q9-hqw"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="0nC-mp-JRA" firstAttribute="trailing" secondItem="0VV-k1-ekk" secondAttribute="trailing" id="2xC-jL-BDk"/>
                     <constraint firstAttribute="bottomMargin" secondItem="MLM-CE-g40" secondAttribute="bottom" constant="-7.5" id="CNO-tE-oI8"/>
                     <constraint firstAttribute="trailing" secondItem="oJ4-zG-fHP" secondAttribute="trailing" constant="8" id="EUg-tB-f4s"/>
                     <constraint firstItem="oJ4-zG-fHP" firstAttribute="leading" secondItem="hpn-Av-oto" secondAttribute="trailing" constant="8" id="F9l-Ds-u6k"/>
                     <constraint firstItem="hpn-Av-oto" firstAttribute="leading" secondItem="0VV-k1-ekk" secondAttribute="trailing" constant="6" id="N2r-KD-ojf"/>
                     <constraint firstItem="MLM-CE-g40" firstAttribute="leading" secondItem="0VV-k1-ekk" secondAttribute="trailing" constant="6" id="O8C-se-qtU"/>
+                    <constraint firstItem="0nC-mp-JRA" firstAttribute="top" secondItem="0VV-k1-ekk" secondAttribute="top" id="R1k-KQ-PX4"/>
                     <constraint firstAttribute="centerY" secondItem="0VV-k1-ekk" secondAttribute="centerY" id="Rr7-aH-rae"/>
                     <constraint firstItem="oJ4-zG-fHP" firstAttribute="leading" secondItem="MLM-CE-g40" secondAttribute="trailing" constant="8" id="S5a-oz-uzl"/>
                     <constraint firstItem="MLM-CE-g40" firstAttribute="top" relation="greaterThanOrEqual" secondItem="hpn-Av-oto" secondAttribute="bottom" constant="1" id="VHw-et-2Gm"/>
                     <constraint firstAttribute="centerY" secondItem="0VV-k1-ekk" secondAttribute="centerY" constant="2" id="adR-xQ-GgV"/>
                     <constraint firstAttribute="centerY" secondItem="oJ4-zG-fHP" secondAttribute="centerY" id="chl-1c-7m5"/>
                     <constraint firstItem="hpn-Av-oto" firstAttribute="top" secondItem="te1-jW-YEp" secondAttribute="topMargin" constant="-8" id="kvo-II-gvu"/>
+                    <constraint firstItem="0nC-mp-JRA" firstAttribute="leading" secondItem="0VV-k1-ekk" secondAttribute="leading" id="swp-e7-XXI"/>
+                    <constraint firstItem="0nC-mp-JRA" firstAttribute="bottom" secondItem="0VV-k1-ekk" secondAttribute="bottom" id="xOe-PV-Mo8"/>
                     <constraint firstItem="0VV-k1-ekk" firstAttribute="leading" secondItem="te1-jW-YEp" secondAttribute="leading" id="xh8-hs-kiO"/>
                 </constraints>
                 <variation key="default">
